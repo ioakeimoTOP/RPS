@@ -3,49 +3,69 @@ import { randInt } from './utils.mjs';
 export class RPS {
   #gameGraph;
   #validChoices;
+  #numChoices;
 
   constructor() {
     this.#gameGraph = new Map([
-      ['rock', new Set(['scissors'])],
-      ['paper', new Set(['rock'])],
-      ['scissors', new Set(['paper'])],
+      [
+        'rock',
+        {
+          beats: new Set(['scissors']),
+          loses: new Set(['paper']),
+        },
+      ],
+      [
+        'paper',
+        {
+          beats: new Set(['rock']),
+          loses: new Set(['scissors']),
+        },
+      ],
+      [
+        'scissors',
+        {
+          beats: new Set(['paper']),
+          loses: new Set(['rock']),
+        },
+      ],
     ]);
 
     this.#validChoices = Array.from(this.#gameGraph.keys());
-  }
-
-  #gameResult(playerChoice, computerChoice) {
-    if (this.#gameGraph.get(playerChoice).has(computerChoice)) {
-      return 'win';
-    } else if (this.#gameGraph.get(computerChoice).has(playerChoice)) {
-      return 'lose';
-    } else {
-      return 'tie';
-    }
+    this.#numChoices = this.#validChoices.length;
   }
 
   #getComputerChoice() {
-    const numberOfChoices = this.#validChoices.length;
-    const choice = this.#validChoices[randInt(numberOfChoices)];
-    return choice;
+    const randomChoice = this.#validChoices[getRandomIndex(this.#numChoices)];
+    return randomChoice;
   }
 
   #isValidChoice(playerChoice) {
-    return this.#validChoices.includes(playerChoice);
+    return this.#gameGraph.has(playerChoice);
   }
 
   getValidChoices() {
     return Array.from(this.#validChoices);
   }
 
+  getGraphFor(playerChoice) {
+    if (!this.#isValidChoice(playerChoice)) return null;
+
+    return {
+      beats: Array.from(this.#gameGraph.get(playerChoice).beats),
+      loses: Array.from(this.#gameGraph.get(playerChoice).loses),
+    };
+  }
+
   playRound(playerChoice) {
-    const parsedPlayerChoice = playerChoice.trim().toLowerCase();
-    if (!this.#isValidChoice(parsedPlayerChoice)) {
-      return {};
-    }
+    if (!this.#isValidChoice(playerChoice)) return null;
 
     const computerChoice = this.#getComputerChoice();
-    const result = this.#gameResult(parsedPlayerChoice, computerChoice);
+    let result = 'tie';
+    if (this.#gameGraph.get(playerChoice).beats.has(computerChoice)) {
+      result = 'win';
+    } else if (this.#gameGraph.get(playerChoice).loses.has(computerChoice)) {
+      result = 'loss';
+    }
 
     return { computerChoice, result };
   }

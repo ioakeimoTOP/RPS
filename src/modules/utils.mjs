@@ -1,3 +1,3 @@
-export function randInt(exclusiveMax) {
-  return Math.floor(Math.random() * exclusiveMax);
+export function getRandomIndex(size) {
+  return Math.floor(Math.random() * size);
 }
