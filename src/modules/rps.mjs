@@ -1,4 +1,4 @@
-import { randInt } from './utils.mjs';
+import { getRandomIndex } from './utils.mjs';
 
 export class RPS {
   #gameGraph;
