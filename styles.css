@@ -124,22 +124,6 @@ main {
     content: '🤖';
 }
 
-.game__choice-undecided::after {
-    content: '❓';
-}
-
-.game__choice-rock::after {
-    content: '🪨';
-}
-
-.game__choice-paper::after {
-    content: '📄';
-}
-
-.game__choice-scissors::after {
-    content: '✂️';
-}
-
 .game__score-player {
     color: chartreuse;
 }
