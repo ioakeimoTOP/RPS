@@ -4,8 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="main.js"></script>
-    <title>Rock Paper Scissors</title>
+    <script type="module" src="main.js" defer></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Rock Paper Scissors plus</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="logo">RPS</div>
+    </header>
+    <main>
+      <div class="game">
+        <div class="game__avatar game__avatar-computer"></div>
+        <div class="game__versus">
+          <button class="game__choice game__choice-undecided"></button>
+          vs
+          <button class="game__choice game__choice-undecided"></button>
+        </div>
+        <div class="game__player">
+          <button class="game__choice game__choice-rock"></button>
+          <button class="game__choice game__choice-paper"></button>
+          <button class="game__choice game__choice-scissors"></button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="copyright">
+        <p>Copyright &copy; ioakeimo 2023</p>
+      </div>
+    </footer>
+  </body>
 </html>

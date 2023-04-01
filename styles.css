@@ -1,0 +1,124 @@
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin:0;
+    padding: 0;
+    border: 0;
+    /* border: 1px solid red; */
+}
+
+body,
+header,
+main,
+footer,
+main,
+.game,
+.game > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body > * {
+    width: 100%;
+    padding: 1rem;
+}
+
+body {
+    min-height: 100vh;
+}
+
+body,
+.game,
+.game__versus {
+    flex-direction: column;
+}
+
+header,
+footer {
+    background: midnightblue;
+    color: aliceblue;
+}
+
+header {
+    font-size: 3rem;
+    font-weight: bolder;
+    text-shadow: .2rem .2rem rgba(256, 256, 256, .5);
+}
+
+main,
+.game {
+    flex-grow: 1;
+}
+
+main {
+    background: lavender;
+}
+
+.game {
+    align-self: stretch;
+    --game-fs: min(3rem, 8vw);
+    max-width: 960px;
+}
+
+.game__avatar {
+    font-size: calc(2 * var(--game-fs));
+}
+
+.game__versus {
+    flex: 3 3 0;
+    justify-content: space-around;
+}
+
+.game__avatar,
+.game__player {
+    flex: 1 1 0;
+}
+
+.game__player {
+    min-width: 80%;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.game__choice {
+    font-size: var(--game-fs);
+
+    padding: max(5%, var(--game-fs)/2);
+    border-radius: 50%;
+
+    cursor: pointer;
+    box-shadow: 0 .1em .2em rgba(0, 0, 0, .5);
+}
+
+.game__choice:hover {
+    transform: scale(1.25);
+    transition-duration: .25s;
+}
+
+.game__avatar-computer::after {
+    content: '🤖';
+}
+
+.game__choice-undecided::after {
+    content: '❓';
+}
+
+.game__choice-rock::after {
+    content: '🪨';
+}
+
+.game__choice-paper::after {
+    content: '📄';
+}
+
+.game__choice-scissors::after {
+    content: '✂️';
+}
+
