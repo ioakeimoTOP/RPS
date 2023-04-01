@@ -10,6 +10,8 @@ html {
     margin:0;
     padding: 0;
     border: 0;
+    font-size: inherit;
+    text-shadow: inherit;
     /* border: 1px solid red; */
 }
 
@@ -27,11 +29,11 @@ main,
 
 body > * {
     width: 100%;
-    padding: 1rem;
 }
 
 body {
     min-height: 100vh;
+    color: aliceblue;
 }
 
 body,
@@ -42,14 +44,17 @@ body,
 
 header,
 footer {
-    background: midnightblue;
-    color: aliceblue;
+    background: #10294d;
+    padding: 1rem;
 }
 
 header {
     font-size: 3rem;
     font-weight: bolder;
-    text-shadow: .2rem .2rem rgba(256, 256, 256, .5);
+    z-index: 1;
+
+    box-shadow: 0 .1em .1em rgba(0, 0, 0, .5);
+    text-shadow: .15rem .15rem rgba(256, 256, 256, .5);
 }
 
 main,
@@ -58,13 +63,23 @@ main,
 }
 
 main {
-    background: lavender;
+    background: #08b7ff;
 }
 
 .game {
-    align-self: stretch;
-    --game-fs: min(3rem, 8vw);
     max-width: 960px;
+    align-self: stretch;
+    background: radial-gradient(
+        circle,
+        rgba(0,0,0,.2) 0%,
+        rgba(0,0,0,0.6) 35%,
+        rgba(0,0,0,0) 85%
+    );
+
+    --game-fs: min(2rem, 8vmin);
+    font-size: var(--game-fs);
+    font-weight: bold;
+    text-shadow: 0px 0px .15em black;
 }
 
 .game__avatar {
@@ -72,7 +87,7 @@ main {
 }
 
 .game__versus {
-    flex: 3 3 0;
+    flex: 2 2 0;
     justify-content: space-around;
 }
 
@@ -87,18 +102,21 @@ main {
     gap: 1rem;
 }
 
-.game__choice {
-    font-size: var(--game-fs);
-
-    padding: max(5%, var(--game-fs)/2);
+.game__icon {
+    padding: max(4%, var(--game-fs)/3);
     border-radius: 50%;
 
-    cursor: pointer;
+    background: rgba(256, 256, 256, .75);
     box-shadow: 0 .1em .2em rgba(0, 0, 0, .5);
 }
 
+.game__choice {
+    cursor: pointer;
+}
+
 .game__choice:hover {
-    transform: scale(1.25);
+    background: rgba(256, 256, 256, .9);
+    transform: scale(1.2);
     transition-duration: .25s;
 }
 
@@ -106,19 +124,26 @@ main {
     content: '🤖';
 }
 
-.game__choice-undecided::after {
+.game__icon-undecided::after {
     content: '❓';
 }
 
-.game__choice-rock::after {
+.game__icon-rock::after {
     content: '🪨';
 }
 
-.game__choice-paper::after {
+.game__icon-paper::after {
     content: '📄';
 }
 
-.game__choice-scissors::after {
+.game__icon-scissors::after {
     content: '✂️';
 }
 
+.game__score-player {
+    color: chartreuse;
+}
+
+.game__score-opponent {
+    color: red;
+}
