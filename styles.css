@@ -67,7 +67,7 @@ main {
 }
 
 .game {
-    max-width: 960px;
+    max-width: 1200px;
     align-self: stretch;
     background: radial-gradient(
         circle,
