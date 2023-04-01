@@ -124,19 +124,19 @@ main {
     content: '🤖';
 }
 
-.game__icon-undecided::after {
+.game__choice-undecided::after {
     content: '❓';
 }
 
-.game__icon-rock::after {
+.game__choice-rock::after {
     content: '🪨';
 }
 
-.game__icon-paper::after {
+.game__choice-paper::after {
     content: '📄';
 }
 
-.game__icon-scissors::after {
+.game__choice-scissors::after {
     content: '✂️';
 }
 
